@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proyecto TFM Reconocer Imagen y Reproducir Audio</title>
+</head>
+<body>
+    <h1>Proyecto TFM Reconocer Imagen y Reproducir Audio</h1>
+    <p>Seleccione una imagen y luego presione "enviar", en unos segundos recibira la descripción de la imagen en audio para reproducir</p>
+
+    <form action="/generate-audio" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <audio controls id="audioPlayer">
+        <source src="" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Obtener referencia al elemento de audio
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        // Manejar la respuesta del servidor
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Evitar el envío del formulario
+            const formData = new FormData(this);
+
+            fetch('/generate-audio', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                // Crear una URL para el archivo de audio y establecerlo como fuente en el reproductor de audio
+                const audioURL = URL.createObjectURL(blob);
+                audioPlayer.src = audioURL;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
+
