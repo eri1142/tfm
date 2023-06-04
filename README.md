@@ -77,3 +77,8 @@ def generate_audio():
 </code></pre>
 
 <p>En esta función, se obtiene la imagen cargada por el usuario, se procesa utilizando un modelo preentrenado para generar una descripción de la imagen en inglés. Luego, se traduce la descripción al español utilizando otro modelo preentrenado. A continuación, se busca si la descripción contiene ciertas palabras clave y se genera un texto de precaución en caso de encontrarlas. Finalmente, se utiliza la API de Google Text-to-Speech
+
+<h3>Uso de la app:</h3><br>
+
+<p>Una vez clonado el repositorio para ejecutar la app en el terminal se debe acceder a la carpeta del proyecto y ejecutar en el terminal el codigo: <strong>python3 app.py</strong>, al ejecutar app.py, deberías poder acceder al formulario HTML en la ruta principal <strong>(http://localhost:5000)</strong> y enviar una imagen para generar el audio correspondiente.</p>
+  
