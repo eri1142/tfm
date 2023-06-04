@@ -36,12 +36,6 @@
     </ul>
   </li>
 
-  <li><strong>Definir la URL de la imagen:</strong>
-    <ul>
-      <li>Se proporcionan varias opciones de URL para la imagen, pero solo una de ellas está descomentada y activa.</li>
-    </ul>
-  </li>
-
   <li><strong>Descargar la imagen:</strong>
     <ul>
       <li>Se utiliza <code>requests.get</code> para descargar la imagen desde la URL especificada.</li>
@@ -107,7 +101,7 @@
     </ul>
   </li>
 
-/**/
+<!-- Explicación del codigo -->
 
 <h3>Explicación del código</h3><br>
 
