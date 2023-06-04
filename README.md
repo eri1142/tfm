@@ -23,9 +23,7 @@
 
 <h3>Descripción de la app:</h3><br>
 
-<h2>Explicación del código</h2>
-
-<p>Este código es un ejemplo de cómo utilizar el modelo "Blip Image Captioning" de Hugging Face para generar descripciones de imágenes y realizar algunas acciones adicionales con los resultados obtenidos. A continuación, te explico paso a paso el código:</p>
+<p>La app utiliza el modelo "Blip Image Captioning" de Hugging Face para generar descripciones de imágenes y realizar algunas acciones adicionales con los resultados obtenidos. A continuación, te explico paso a paso el código:</p>
 
 <ol>
   <li><strong>Importar las bibliotecas necesarias:</strong>
@@ -73,12 +71,6 @@
       <li>Se inicializa una lista vacía (`palabras_encontradas`) para almacenar las palabras encontradas.</li>
       <li>Se recorre cada palabra de búsqueda y se verifica si está presente en la descripción traducida.</li>
       <li>Si se encuentra una palabra, se agrega a la lista de palabras encontradas y se actualiza el texto con una advertencia específica para esa palabra.</li>
-    </ul>
-  </li>
-  
-  <li><strong>Imprimir las palabras encontradas:</strong>
-    <ul>
-      <li>Se imprimen las palabras encontradas y el texto final.</li>
     </ul>
   </li>
 
