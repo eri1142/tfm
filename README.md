@@ -105,7 +105,7 @@
 
 <h3>Explicación del código</h3><br>
 
-<p>El siguiente código es un ejemplo de una aplicación web utilizando el framework Flask en Python. La aplicación permite a los usuarios cargar una imagen y generar un archivo de audio correspondiente a una descripción de la imagen.</p>
+<p>El código del archivo <strong>app.py</strong> es un ejemplo de una aplicación web utilizando el framework Flask en Python. La aplicación permite a los usuarios cargar una imagen y generar un archivo de audio correspondiente a una descripción de la imagen.</p>
 
 <h3>Importar las bibliotecas necesarias:</h3>
 
