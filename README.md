@@ -25,6 +25,92 @@
 
 <h2>Explicación del código</h2>
 
+<p>Este código es un ejemplo de cómo utilizar el modelo "Blip Image Captioning" de Hugging Face para generar descripciones de imágenes y realizar algunas acciones adicionales con los resultados obtenidos. A continuación, te explico paso a paso el código:</p>
+
+<ol>
+  <li><strong>Importar las bibliotecas necesarias:</strong>
+    <ul>
+      <li><code>requests</code>: se utiliza para realizar solicitudes HTTP, en este caso para descargar la imagen.</li>
+      <li><code>PIL</code> (Python Imaging Library): se utiliza para abrir y manipular la imagen descargada.</li>
+      <li><code>transformers</code>: se utiliza para trabajar con modelos de procesamiento de lenguaje natural (NLP).</li>
+    </ul>
+  </li>
+
+  <li><strong>Definir la URL de la imagen:</strong>
+    <ul>
+      <li>Se proporcionan varias opciones de URL para la imagen, pero solo una de ellas está descomentada y activa.</li>
+    </ul>
+  </li>
+
+  <li><strong>Descargar la imagen:</strong>
+    <ul>
+      <li>Se utiliza <code>requests.get</code> para descargar la imagen desde la URL especificada.</li>
+      <li><code>Image.open</code> se utiliza para abrir la imagen descargada.</li>
+      <li><code>.convert('RGB')</code> se utiliza para convertir la imagen a modo RGB.</li>
+    </ul>
+  </li>
+
+  <li><strong>Inicializar los modelos y procesadores:</strong>
+    <ul>
+      <li><code>BlipProcessor</code> y <code>BlipForConditionalGeneration</code> son modelos preentrenados proporcionados por Hugging Face.</li>
+      <li>Se carga el procesador y el modelo preentrenados usando <code>from_pretrained</code>.</li>
+      <li><code>pipeline</code> se utiliza para inicializar un modelo de traducción preentrenado.</li>
+    </ul>
+  </li>
+
+  <li><strong>Generar la descripción de la imagen:</strong>
+    <ul>
+      <li>Se procesa la imagen descargada utilizando el procesador (<code>processor</code>) para prepararla como entrada para el modelo.</li>
+      <li>Luego, se genera la descripción utilizando el modelo (<code>model.generate</code>).</li>
+      <li>La descripción generada se decodifica utilizando el procesador para obtener el texto final (<code>processor.decode</code>).</li>
+    </ul>
+  </li>
+
+  <li><strong>Traducir la descripción al español:</strong>
+    <ul>
+      <li>Se utiliza el modelo de traducción (<code>traductor</code>) para traducir la descripción generada al español.</li>
+      <li>La traducción se obtiene de la primera entrada en el resultado (<code>traductor(out_image)[0]['translation_text']</code>).</li>
+    </ul>
+  </li>
+
+  <li><strong>Buscar las palabras:</strong>
+    <ul>
+      <li>Se define una lista de palabras de búsqueda (<code>palabras_busqueda</code>) que se desean encontrar en la descripción.</li>
+      <li>Se inicializa una lista vacía (`palabras_encontradas`) para almacenar las palabras encontradas.</li>
+      <li>Se recorre cada palabra de búsqueda y se verifica si está presente en la descripción traducida.</li>
+      <li>Si se encuentra una palabra, se agrega a la lista de palabras encontradas y se actualiza el texto con una advertencia específica para esa palabra.</li>
+    </ul>
+  </li>
+  
+  <li><strong>Imprimir las palabras encontradas:</strong>
+    <ul>
+      <li>Se imprimen las palabras encontradas y el texto final.</li>
+    </ul>
+  </li>
+
+  <li><strong>Obtener el audio a través de la API de Google Text-to-Speech:</strong>
+    <ul>
+      <li>Se realiza una solicitud GET a la API de Google Text-to-Speech para convertir el texto en audio en español.</li>
+      <li>La URL de la solicitud incluye el texto (<code>`q={texto}`</code>) y otros parámetros como el idioma (<code>`tl=es`</code>).</li>
+    </ul>
+  </li>
+
+  <li><strong>Guardar el audio en un archivo:</strong>
+    <ul>
+      <li>Se guarda la respuesta de la API de Google Text-to-Speech en un archivo de audio (<code>`output.mp3`</code>).</li>
+    </ul>
+  </li>
+
+<li><strong>Reproducir el audio:</strong>
+    <ul>
+      <li>Finalmente, se utiliza la biblioteca <code>`IPython.display.Audio`</code> para reproducir el archivo de audio generado.</li>
+    </ul>
+  </li>
+
+/**/
+
+<h3>Explicación del código</h3><br>
+
 <p>El siguiente código es un ejemplo de una aplicación web utilizando el framework Flask en Python. La aplicación permite a los usuarios cargar una imagen y generar un archivo de audio correspondiente a una descripción de la imagen.</p>
 
 <h3>Importar las bibliotecas necesarias:</h3>
