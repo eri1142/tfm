@@ -1,7 +1,6 @@
 #Importar flask y otras bibliotecas necesarias para el proyecto
-from flask import Flask, request, jsonify, send_file, render_template
-#import requests #Generación de archivo de audio .mp3 
-from gtts import gTTS #Audio en línea
+from flask import Flask, request, jsonify, send_file, render_template, Response
+import requests
 from PIL import Image
 from transformers import BlipProcessor, BlipForConditionalGeneration
 from transformers import pipeline
@@ -56,19 +55,13 @@ def generate_audio():
                 texto = f"Precaución, existe en la imagen el siguiente objeto: '{palabras_encontradas}'. La descripción de la imagen es: {traduccion}"
 
     # Obtener el audio (API de Google Text-to-Speech)
-    #response = requests.get(f"https://translate.google.com/translate_tts?ie=UTF-8&tl=es&client=tw-ob&q={texto}")
+    response = requests.get(f"https://translate.google.com/translate_tts?ie=UTF-8&tl=es&client=tw-ob&q={texto}")
 
-    # Guardar el audio en archivo
-    #audio_file = 'output.mp3'
-    #with open(audio_file, 'wb') as f:
-    #    f.write(response.content)
+    # Generar el audio en línea utilizando Requests
+    audio_data = response.content
     
-    #Generar el audio en línea utilizando gTTS
-    tts = gTTS(text=texto, lang='es')
-    audio_file = 'output.mp3'
-    tts.save(audio_file)
 
-    return send_file(audio_file, mimetype='audio/mpeg')
+    return Response(audio_data, mimetype='audio/mpeg')
 
 # Ejecutar la aplicación Flask
 if __name__ == '__main__':
