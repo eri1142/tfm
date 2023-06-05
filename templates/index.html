@@ -23,9 +23,9 @@
         <img src="https://universidadeuropea.com/resources/media/images/universidad-europea-logo_poc9mEM.original.png" alt="Universidad Europea Logo" class="logo mx-auto d-block">
         <p class="text-center">Seleccione una imagen y luego presione "Enviar". En unos segundos recibirá la descripción de la imagen en audio para reproducir.</p>
 
-        <form action="/generate-audio" method="POST" enctype="multipart/form-data" class="text-center">
+        <form id="imageForm" enctype="multipart/form-data" class="text-center">
             <div class="form-group">
-                <input type="file" name="image" accept="image/*" required>
+                <input type="file" id="imageInput" accept="image/*" required>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
@@ -42,10 +42,11 @@
         // Obtener referencia al elemento de audio
         const audioPlayer = document.getElementById('audioPlayer');
 
-        // Manejar la respuesta del servidor
-        document.querySelector('form').addEventListener('submit', function(event) {
+        // Manejar el envío del formulario
+        document.getElementById('imageForm').addEventListener('submit', function(event) {
             event.preventDefault();  // Evitar el envío del formulario
-            const formData = new FormData(this);
+            const formData = new FormData();
+            formData.append('image', document.getElementById('imageInput').files[0]);
 
             fetch('/generate-audio', {
                 method: 'POST',
@@ -65,10 +66,6 @@
 </body>
 </html>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
 
 
 
