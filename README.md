@@ -137,7 +137,7 @@ def generate_audio():
     # Generar el audio en línea utilizando Requests
     audio_data = response.content
 
-    return send_file(audio_file, mimetype='audio/mpeg')
+    return send_file(audio_data, mimetype='audio/mpeg')
 </code></pre>
 
 <p>En esta función, se obtiene la imagen cargada por el usuario, se procesa utilizando un modelo preentrenado para generar una descripción de la imagen en inglés. Luego, se traduce la descripción al español utilizando otro modelo preentrenado. A continuación, se busca si la descripción contiene ciertas palabras clave y se genera un texto de precaución en caso de encontrarlas. Finalmente, se utiliza la API de Google Text-to-Speech
