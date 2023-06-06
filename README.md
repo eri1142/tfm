@@ -153,4 +153,6 @@ def generate_audio():
 <h3>Uso de la app:</h3><br>
 
 <p>Una vez clonado el repositorio para ejecutar la app en el terminal se debe acceder a la carpeta del proyecto y ejecutar en el terminal el codigo: <strong>python3 app.py</strong>, al ejecutar app.py, deberías poder acceder al formulario HTML en la ruta principal <strong>(http://localhost:5000)</strong> y enviar una imagen para generar el audio correspondiente.</p>
+
+  <p><strong>runtime:</strong> python-3.10.9</p>
   
