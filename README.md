@@ -23,7 +23,7 @@
 
 <h3>Descripción de la app:</h3><br>
 
-<p>La app utiliza el modelo "Blip Image Captioning" de Hugging Face para generar descripciones de imágenes y realizar algunas acciones adicionales con los resultados obtenidos. A continuación, te explico paso a paso el código:</p>
+<p>La app utiliza el modelo "Blip Image Captioning" de Hugging Face para generar descripciones de imágenes y realizar algunas acciones adicionales con los resultados obtenidos.</p>
 
 <ol>
   <li><strong>Importar las bibliotecas necesarias:</strong>
@@ -81,13 +81,7 @@
     </ul>
   </li>
 
-  <li><strong>Guardar el audio en un archivo:</strong>
-    <ul>
-      <li>Se guarda la respuesta de la API de Google Text-to-Speech en un archivo de audio (<code>`output.mp3`</code>).</li>
-    </ul>
-  </li>
-
-<li><strong>Reproducir el audio:</strong>
+  <li><strong>Reproducir el audio:</strong>
     <ul>
       <li>Finalmente, se utiliza la biblioteca <code>`IPython.display.Audio`</code> para reproducir el archivo de audio generado.</li>
     </ul>
@@ -97,11 +91,11 @@
 
 <h3>Explicación del código</h3><br>
 
-<p>El código del archivo <strong>app.py</strong> es un ejemplo de una aplicación web utilizando el framework Flask en Python. La aplicación permite a los usuarios cargar una imagen y generar un archivo de audio correspondiente a una descripción de la imagen.</p>
+  <p>El código del archivo <strong>app.py</strong> es un ejemplo de una aplicación web utilizando el framework Flask en Python. La aplicación permite a los usuarios cargar una imagen y generar un archivo de audio correspondiente a una descripción de la imagen.</p>
 
 <h3>Importar las bibliotecas necesarias:</h3>
 
-<p>El código importa las siguientes bibliotecas:</p>
+  <p>El código importa las siguientes bibliotecas:</p>
 
 <ul>
   <li><code>Flask</code>: El framework web utilizado para construir la aplicación.</li>
@@ -140,10 +134,8 @@ def generate_audio():
     # Obtener el audio (API de Google Text-to-Speech)
     response = requests.get(f"https://translate.google.com/translate_tts?ie=UTF-8&amp;tl=es&amp;client=tw-ob&amp;q={texto}")
 
-    # Guardar el audio en archivo
-    audio_file = 'output.mp3'
-    with open(audio_file, 'wb') as f:
-        f.write(response.content)
+    # Generar el audio en línea utilizando Requests
+    audio_data = response.content
 
     return send_file(audio_file, mimetype='audio/mpeg')
 </code></pre>
