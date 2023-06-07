@@ -42,7 +42,7 @@ def generate_audio():
     traduccion = traductor(out_image)[0]['translation_text']
 
     # Buscar las palabras
-    palabras_busqueda = ["cuchillo", "cristal", "tabla de cortar"]
+    palabras_busqueda = ["cuchillo", "cristal", "estufa superior", "toma de corriente eléctrica"]
     palabras_encontradas = []
     texto = f"No se detectan peligros en la imagen. La descripción de la imagen es: {traduccion}"
 
